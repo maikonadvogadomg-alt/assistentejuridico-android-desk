@@ -1,0 +1,53 @@
+{
+  "name": "assistente-juridico",
+  "version": "1.0.0",
+  "description": "Assistente Jurídico IA — App Desktop",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
+    "build:all": "electron-builder -mwl"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.0"
+  },
+  "build": {
+    "appId": "br.com.assistentejuridico",
+    "productName": "Assistente Jurídico IA",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist-electron"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "app/**/*"
+    ],
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "app/icon.svg"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "app/icon.svg",
+      "category": "public.app-category.productivity"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "icon": "app/icon.svg",
+      "category": "Office"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "app/icon.svg",
+      "uninstallerIcon": "app/icon.svg",
+      "installerHeader": "app/icon.svg"
+    }
+  }
+}
